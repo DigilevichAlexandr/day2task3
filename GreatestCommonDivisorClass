@@ -27,6 +27,30 @@ namespace ASP.NET.Digilevich.Day2.Task3
                     }                 
             }
 
+            public static int EuclideanAlgorithm(int a, int b, int c, out TimeSpan timespan)
+            {
+                DateTime now = DateTime.Now;
+                while (a != 0 && b != 0 && c!=0)
+                {
+                    if (a > b && a > c)
+                        a %= b;
+                    else
+                        if (b > a && b > c)
+                            b %= a;
+                }
+
+                if (a == 0)
+                {
+                    timespan = new TimeSpan((DateTime.Now - now).Ticks);
+                    return b;
+                }
+                else
+                {
+                    timespan = new TimeSpan((DateTime.Now - now).Ticks);
+                    return a;
+                }
+            }
+
             public static int SteinAlgorithm(int m, int n, out TimeSpan timespan)
             { 
                 DateTime now = DateTime.Now;
@@ -49,7 +73,7 @@ namespace ASP.NET.Digilevich.Day2.Task3
                         res = 1;
 
                     if (a % 2 == 0 && b % 2 == 0)
-                        res = SteinPart(a / 2, b / 2);
+                        res = 2 * SteinPart(a / 2, b / 2);
 
                     if (a % 2 == 0 && b % 2 != 0)
                         res = SteinPart(a / 2, b);
