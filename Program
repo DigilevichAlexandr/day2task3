@@ -8,6 +8,7 @@ namespace ASP.NET.Digilevich.Day2.Task3
         {
             TimeSpan ts;
             Console.WriteLine(GreatestCommonDivisorClass.EuclideanAlgorithm(33, 15, out ts).ToString()+" "+ts.ToString());
+            Console.WriteLine(GreatestCommonDivisorClass.SteinAlgorithm(33, 15, out ts).ToString() + " " + ts.ToString());
 
             Console.Read();
         }
