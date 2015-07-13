@@ -13,5 +13,12 @@ namespace UnitTestProject1
             TimeSpan ts;
             Assert.AreEqual(3,GreatestCommonDivisorClass.EuclideanAlgorithm(33, 15, out ts));
         }
+
+        [TestMethod]
+        public void SteinAlgorithmTestMethod()
+        {
+            TimeSpan ts;
+            Assert.AreEqual(3, GreatestCommonDivisorClass.SteinAlgorithm(33, 15, out ts));
+        }
     }
 }
