@@ -1,34 +1,69 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ASP.NET.Digilevich.Day2.Task3
 {
-    class GreatestCommonDivisorClass
+    public class GreatestCommonDivisorClass
     {
             public static int EuclideanAlgorithm(int a,int b,out TimeSpan timespan)
-        {
-            DateTime now = DateTime.Now;
-            while (a != 0 && b != 0)
-            {
-                if (a > b)
-                    a %= b;
-                else
-                    b %= a;
+                {
+                    DateTime now = DateTime.Now;
+                    while (a != 0 && b != 0)
+                    {
+                        if (a > b)
+                        a %= b;
+                        else
+                        b %= a;
+                    }
+
+                    if (a == 0)
+                    {
+                        timespan = new TimeSpan((DateTime.Now - now).Ticks);
+                        return b;
+                    }                
+                    else
+                    {
+                        timespan = new TimeSpan((DateTime.Now - now).Ticks);
+                        return a;  
+                    }                 
             }
 
-            if (a == 0)
-            {
+            public static int SteinAlgorithm(int m, int n, out TimeSpan timespan)
+            { 
+                DateTime now = DateTime.Now;
+                int res = SteinPart(m,n);
                 timespan = new TimeSpan((DateTime.Now - now).Ticks);
-                return b;
-            }                
-            else
-            {
-                timespan = new TimeSpan((DateTime.Now - now).Ticks);
-                return a;  
-            }                 
-        }      
+                return res;
+            }
+
+            private static int SteinPart(int a,int b)
+                 {
+                    
+                    int res = 0;
+                    if (a == 0 || a == b)
+                        res = b;
+
+                    if (b == 0)
+                        res = a;
+
+                    if (a == 1 || b == 1)
+                        res = 1;
+
+                    if (a % 2 == 0 && b % 2 == 0)
+                        res = SteinPart(a / 2, b / 2);
+
+                    if (a % 2 == 0 && b % 2 != 0)
+                        res = SteinPart(a / 2, b);
+
+                    if (a % 2 != 0 && b % 2 == 0)
+                        res = SteinPart(a, b / 2);
+
+                    if ((a % 2 != 0 && b % 2 != 0) && a<b)
+                        res = SteinPart((b - a) / 2, a);
+
+                    if ((a % 2 != 0 && b % 2 != 0) && a > b)
+                        res = SteinPart((a - b) / 2, b);
+                    
+                    return res; 
+            }
     }
 }
