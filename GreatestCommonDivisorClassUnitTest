@@ -1,0 +1,17 @@
+using System;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using ASP.NET.Digilevich.Day2.Task3;
+
+namespace UnitTestProject1
+{
+    [TestClass]
+    public class GreatestCommonDivisorClassUnitTest
+    {
+        [TestMethod]
+        public void EuclideanAlgorithmTestMethod()
+        {
+            TimeSpan ts;
+            Assert.AreEqual(3,GreatestCommonDivisorClass.EuclideanAlgorithm(33, 15, out ts));
+        }
+    }
+}
